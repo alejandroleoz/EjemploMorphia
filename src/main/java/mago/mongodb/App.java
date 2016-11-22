@@ -12,9 +12,9 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
 
-        App.delete(MongoDBConnection.getInstance().getDatastore());
+//        App.delete(MongoDBConnection.getInstance().getDatastore());
         App.crear(MongoDBConnection.getInstance().getDatastore());
-        App.recuperar(MongoDBConnection.getInstance().getDatastore());
+//        App.recuperar(MongoDBConnection.getInstance().getDatastore());
 
     }
 
@@ -37,6 +37,8 @@ public class App {
 
         // persistir
         datastore.save(registroBusqueda);
+
+        MySQLConnection.getInstance().save(registroBusqueda);
     }
 
     public static void delete(Datastore datastore) {

@@ -5,28 +5,46 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
+import javax.persistence.CascadeType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 
 // Aca indicamos cual es la collection donde vamos a guardar los documentos
 @Entity("registro")
+@javax.persistence.Entity
 public class RegistroBusqueda {
 
     @Id
-    private ObjectId id;
+    private ObjectId mongoId;
+
+    @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String query;
 
     private Long tiempo;
 
     @Embedded
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<POI> pois;
 
-    public ObjectId getId() {
+    public ObjectId getMongoId() {
+        return mongoId;
+    }
+
+    public void setMongoId(ObjectId mongoId) {
+        this.mongoId = mongoId;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,7 +75,7 @@ public class RegistroBusqueda {
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append("ID: ").append(this.getId()).append("\n");
+        sb.append("ID: ").append(this.getMongoId()).append("\n");
         sb.append("Query: ").append(this.getQuery()).append("\n");
         sb.append("Tiempo: ").append(this.getTiempo()).append("\n");
 
