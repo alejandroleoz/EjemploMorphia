@@ -14,7 +14,7 @@ public class App {
 
 //        App.delete(MongoDBConnection.getInstance().getDatastore());
         App.crear(MongoDBConnection.getInstance().getDatastore());
-//        App.recuperar(MongoDBConnection.getInstance().getDatastore());
+        App.recuperar(MongoDBConnection.getInstance().getDatastore());
 
     }
 
@@ -59,5 +59,13 @@ public class App {
             System.out.println(item);
             System.out.println(" ------------------------------ ");
         }
+
+
+        System.out.println("=================================");
+        List<RegistroBusqueda> registros = MySQLConnection.getInstance().getAllRegistros();
+        for (RegistroBusqueda registro : registros) {
+            System.out.println(registro);
+        }
+
     }
 }

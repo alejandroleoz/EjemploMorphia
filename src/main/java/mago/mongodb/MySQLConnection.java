@@ -3,6 +3,7 @@ package mago.mongodb;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class MySQLConnection {
 
@@ -32,6 +33,14 @@ public class MySQLConnection {
         this.entityManager.getTransaction().begin();
         this.entityManager.persist(o);
         this.entityManager.getTransaction().commit();
+    }
+
+    public Object get(Long id, Class clazz) {
+        return this.entityManager.find(clazz, id);
+    }
+
+    public List<RegistroBusqueda> getAllRegistros(){
+        return this.entityManager.createQuery("select r from RegistroBusqueda r").getResultList();
     }
 
 }
