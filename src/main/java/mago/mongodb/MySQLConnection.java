@@ -3,6 +3,7 @@ package mago.mongodb;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 public class MySQLConnection {
@@ -44,7 +45,9 @@ public class MySQLConnection {
     }
 
     public List<POI> getPOIByPalabraClave(String palabra) {
-        return this.entityManager.createQuery("select p from POI p where '" + palabra + "' in elements(p.palabrasClave)").getResultList();
+        String queryStr = "SELECT p from POI p, IN(p.palabrasClave) pc WHERE pc like :palabra";
+        Query query = this.entityManager.createQuery(queryStr).setParameter("palabra", "%" + palabra + "%");
+        return query.getResultList();
     }
 
 }

@@ -36,20 +36,20 @@ public class App_Grupo3 {
 
     public static void recuperar() {
         List<POI> pois;
-        System.out.println("========= 'Libreria' ==============");
-        pois = MySQLConnection.getInstance().getPOIByPalabraClave("Libreria");
+        System.out.println("========= 'breri' ==============");
+        pois = MySQLConnection.getInstance().getPOIByPalabraClave("breri");
         for (POI poi : pois) {
             System.out.println(poi.getNombre());
         }
 
-        System.out.println("========= 'Kiosco' ==============");
-        pois = MySQLConnection.getInstance().getPOIByPalabraClave("Kiosco");
+        System.out.println("========= 'sco' ==============");
+        pois = MySQLConnection.getInstance().getPOIByPalabraClave("sco");
         for (POI poi : pois) {
             System.out.println(poi.getNombre());
         }
 
-        System.out.println("========= 'Comercio' ==============");
-        pois = MySQLConnection.getInstance().getPOIByPalabraClave("Comercio");
+        System.out.println("========= 'Come' ==============");
+        pois = MySQLConnection.getInstance().getPOIByPalabraClave("Come");
         for (POI poi : pois) {
             System.out.println(poi.getNombre());
         }
