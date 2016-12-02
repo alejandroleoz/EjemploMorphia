@@ -43,4 +43,8 @@ public class MySQLConnection {
         return this.entityManager.createQuery("select r from RegistroBusqueda r").getResultList();
     }
 
+    public List<POI> getPOIByPalabraClave(String palabra) {
+        return this.entityManager.createQuery("select p from POI p where '" + palabra + "' in elements(p.palabrasClave)").getResultList();
+    }
+
 }

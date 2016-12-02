@@ -1,9 +1,7 @@
 package mago.mongodb;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by aleoz on 11/11/16.
@@ -20,6 +18,9 @@ public class POI {
     private Long latitud;
 
     private Long longitud;
+
+    @ElementCollection
+    private List<String> palabrasClave;
 
     public Long getId() {
         return id;
@@ -51,5 +52,13 @@ public class POI {
 
     public void setLongitud(Long longitud) {
         this.longitud = longitud;
+    }
+
+    public List<String> getPalabrasClave() {
+        return palabrasClave;
+    }
+
+    public void setPalabrasClave(List<String> palabrasClave) {
+        this.palabrasClave = palabrasClave;
     }
 }
